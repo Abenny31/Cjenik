@@ -1,0 +1,26 @@
+﻿<Page x:Class="Cjenik.KlijentiPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cjenik"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="KlijentiPage">
+
+    <Grid Background="White" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
+        <TextBox Text="KLIJENTI" TextWrapping="Wrap" Margin="115,0,122,274" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Content="Povratak" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Height="48" Width="76" Click="PovratakBtn"/>
+        <TextBox x:Name="Naziv_txt" HorizontalAlignment="Left" Height="24" Margin="111,163,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <TextBox x:Name="Oib_txt" HorizontalAlignment="Left" Height="24" Margin="111,0,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Center" Width="142"/>
+        <TextBox x:Name="Adresa_txt" HorizontalAlignment="Left" Height="24" Margin="111,272,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <TextBox x:Name="Email_txt" HorizontalAlignment="Left" Height="24" Margin="111,324,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <DataGrid x:Name="dataGrid"  HorizontalAlignment="Left" Height="243" Margin="294,163,0,0" VerticalAlignment="Top" Width="440"/>
+        <Label Content="Naziv" HorizontalAlignment="Left" Margin="31,157,0,0" VerticalAlignment="Top"/>
+        <Label Content="Oib" HorizontalAlignment="Left" Margin="36,0,0,0" VerticalAlignment="Center"/>
+        <Label Content="Adresa" HorizontalAlignment="Left" Margin="27,267,0,0" VerticalAlignment="Top"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="36,318,0,0" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Page>

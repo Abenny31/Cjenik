@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cjenik"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Cjenik" Height="450" Width="800">
     <Grid>
         <TextBox Text="CJENIK" TextWrapping="Wrap" Margin="115,0,122,274" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Button x:Name="KlijentiBtn" Content="KLIJENTI" HorizontalAlignment="Left" Height="64" Margin="150,235,0,0" VerticalAlignment="Top" Width="134" Click="KlijentiBtn_Click"/>
         <Button x:Name="UslugeBtn" Content="USLUGE" HorizontalAlignment="Center" Height="64" Margin="0,235,0,0" VerticalAlignment="Top" Width="134" Click="UslugeBtn_Click"/>
         <Button x:Name="TipUslugeBtn" Content="TIP USLUGE" HorizontalAlignment="Right" Height="64" Margin="0,235,150,0" VerticalAlignment="Top" Width="134" Click="TipUslugeBtn_Click"/>
 
-
+        <Frame x:Name="MainFrame" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" NavigationUIVisibility="Hidden"/>
 
     </Grid>
 </Window>

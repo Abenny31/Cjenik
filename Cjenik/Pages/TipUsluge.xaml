@@ -1,0 +1,17 @@
+﻿<Page x:Class="Cjenik.Pages.TipUsluge"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cjenik.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TipUsluge">
+
+    <Grid Background="White" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
+        <TextBox Text="TIP USLUGE" TextWrapping="Wrap" Margin="115,0,122,274" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button Content="Povratak" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Height="48" Width="76" Click="PovratakBtn"/>
+
+
+    </Grid>
+</Page>

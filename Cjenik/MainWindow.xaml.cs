@@ -11,12 +11,10 @@ namespace Cjenik
         {
             InitializeComponent();
         }
-        private void KlijentiBtn_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
         private void UslugeBtn_Click(object sender, RoutedEventArgs e)
         {
+            MainFrame.Content = new UslugePage();
 
         }
         private void TipUslugeBtn_Click(object sender, RoutedEventArgs e)
@@ -24,8 +22,10 @@ namespace Cjenik
 
         }
 
-     
-
-        
+        private void KlijentiBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new KlijentiPage();
+            
+        }
     }
 }
