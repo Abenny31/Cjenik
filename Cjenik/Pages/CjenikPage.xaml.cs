@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Cjenik.Pages
 
@@ -32,7 +24,7 @@ namespace Cjenik.Pages
         private void navComplete(object sender, NavigationEventArgs e)
         {
             //e.Content.ToString();
-            
+
             string str = (string)e.ExtraData;
             KlijentID.Text = str;
 
@@ -43,7 +35,7 @@ namespace Cjenik.Pages
         private void PovratakBtn(object sender, RoutedEventArgs e)
         {
             this.Content = null;
-
+            
         }
 
         public void UcitajCjenik()
@@ -53,7 +45,7 @@ namespace Cjenik.Pages
             cmd.CommandType = CommandType.StoredProcedure;
             //cmd.CommandText = "UcitajCjenikJednoga";
             cmd.CommandText = "UcitajCjenike";
-            SqlParameter id = new SqlParameter("@ID",KlijentID.Text);
+            SqlParameter id = new SqlParameter("@ID", KlijentID.Text);
             cmd.Parameters.Add(id);
             DataTable dataTable = new DataTable();
             conn.Open();
@@ -61,7 +53,6 @@ namespace Cjenik.Pages
             dataTable.Load(sdr);
             conn.Close();
             dataGrid.ItemsSource = dataTable.DefaultView;
-
 
         }
 
@@ -84,7 +75,6 @@ namespace Cjenik.Pages
             UcitajCjenik();
             MessageBox.Show("Uspješno dodana Usluga", "Spremljeno", MessageBoxButton.OK); ;
             ocisti();
-
 
         }
 
@@ -155,13 +145,8 @@ namespace Cjenik.Pages
             if (row != null)
             {
                 ID_TXT.Text = row["ID"].ToString();
-                
-
-
 
             }
-
-
 
         }
         public void ListaUsluga()
@@ -178,7 +163,7 @@ namespace Cjenik.Pages
             {
                 string dodaj = dr["Naziv"].ToString();
 
-               comboUsluga.Items.Add(dodaj);
+                comboUsluga.Items.Add(dodaj);
 
             }
 
@@ -192,7 +177,7 @@ namespace Cjenik.Pages
         //    SqlCommand cmd = new SqlCommand();
         //    cmd.Connection = conn;
         //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.CommandText = "ComboSelect";
+        //    cmd.CommandText = "";
         //    SqlParameter naziv = new SqlParameter("@Naziv", text);
         //    cmd.Parameters.Add(naziv);
         //    DataTable dataTable = new DataTable();
@@ -202,12 +187,6 @@ namespace Cjenik.Pages
 
 
         //    conn.Close();
-
-        //    //FKtip_txt.Text = result.ToString(); ;
-
-
-
-
         //}
     }
 }

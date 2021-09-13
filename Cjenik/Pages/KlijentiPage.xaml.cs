@@ -8,9 +8,6 @@ using Cjenik.Pages;
 
 namespace Cjenik
 {
-    /// <summary>
-    /// Interaction logic for KlijentiPage.xaml
-    /// </summary>
     public partial class KlijentiPage : Page
     {
         SqlConnection conn = new SqlConnection(@"Data Source=BENIC;Initial Catalog=CjenikDatabase;Integrated Security=True;");
@@ -18,7 +15,6 @@ namespace Cjenik
         {
             InitializeComponent();
             UcitajKlijente();
-
 
         }
         public void UcitajKlijente()
@@ -39,7 +35,6 @@ namespace Cjenik
         private void PovratakBtn(object sender, RoutedEventArgs e)
         {
             this.Content = null;
-
 
         }
 
@@ -75,7 +70,6 @@ namespace Cjenik
             UcitajKlijente();
             MessageBox.Show("Uspješno dodan klijent", "Spremljeno", MessageBoxButton.OK); ;
             ocisti();
-
 
         }
 
@@ -129,7 +123,7 @@ namespace Cjenik
             klijent.OIB = Oib_txt.Text;
             klijent.Adresa = Adresa_txt.Text;
             klijent.Email = Email_txt.Text;
-            SqlParameter ID = new SqlParameter("@ID" , klijent.ID);
+            SqlParameter ID = new SqlParameter("@ID", klijent.ID);
             SqlParameter naziv = new SqlParameter("@Naziv", klijent.Naziv);
             SqlParameter oib = new SqlParameter("@OIB", klijent.OIB);
             SqlParameter adresa = new SqlParameter("@Adresa", klijent.Adresa);
@@ -149,7 +143,7 @@ namespace Cjenik
         public string IDtxt { get; set; }
         private void IzaberiBtn(object sender, RoutedEventArgs e)
         {
-            IDtxt= ID_TXT.Text;
+            IDtxt = ID_TXT.Text;
             CjenikPage c1 = new CjenikPage();
             this.NavigationService.Navigate(c1, IDtxt);
 
@@ -185,7 +179,6 @@ namespace Cjenik
                 Email_txt.Text = row["Email"].ToString();
 
             }
-
 
         }
     }

@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Cjenik
 {
@@ -25,7 +16,6 @@ namespace Cjenik
             InitializeComponent();
             UcitajUsluge();
             ListaTipova();
-
 
         }
 
@@ -53,7 +43,6 @@ namespace Cjenik
             }
 
             conn.Close();
-
 
         }
 
@@ -89,7 +78,6 @@ namespace Cjenik
             UcitajUsluge();
             MessageBox.Show("Uspješno dodana Usluga", "Spremljeno", MessageBoxButton.OK); ;
             ocisti();
-
 
         }
 
@@ -174,11 +162,7 @@ namespace Cjenik
                 Naziv_txt.Text = row["Naziv"].ToString();
                 ComboTip.SelectedItem = row["Naziv1"].ToString();
 
-
-
             }
-
-
 
         }
 
@@ -193,16 +177,9 @@ namespace Cjenik
             cmd.Parameters.Add(naziv);
             DataTable dataTable = new DataTable();
             conn.Open();
-            //int result = (int)cmd.ExecuteScalar();
             FKtip_txt.Text = Convert.ToString(cmd.ExecuteScalar());
 
-
             conn.Close();
-
-            //FKtip_txt.Text = result.ToString(); ;
-
-
-          
 
         }
     }

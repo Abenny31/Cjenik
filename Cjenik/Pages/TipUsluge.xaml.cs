@@ -21,7 +21,6 @@ namespace Cjenik.Pages
         }
 
 
-
         public void UcitajTipove()
         {
             SqlCommand cmd = new SqlCommand();
@@ -133,11 +132,8 @@ namespace Cjenik.Pages
             {
                 ID_TXT.Text = row["ID"].ToString();
                 Naziv_txt.Text = row["Naziv"].ToString();
-               
 
             }
-
-
 
         }
     }
