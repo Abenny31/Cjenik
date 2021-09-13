@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Cjenik.Pages;
+using System.Windows;
 
 namespace Cjenik
 {
@@ -19,7 +20,7 @@ namespace Cjenik
         }
         private void TipUslugeBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Content = new TipUsluge();
         }
 
         private void KlijentiBtn_Click(object sender, RoutedEventArgs e)

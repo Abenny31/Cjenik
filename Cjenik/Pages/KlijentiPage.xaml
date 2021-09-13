@@ -9,17 +9,26 @@
       Title="KlijentiPage">
 
     <Grid Background="White" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
-        <TextBox Text="KLIJENTI" TextWrapping="Wrap" Margin="115,0,122,274" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox Text="KLIJENTI" TextWrapping="Wrap" Margin="294,34,0,0" FontSize="48" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Button Content="Povratak" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Height="48" Width="76" Click="PovratakBtn"/>
-        <TextBox x:Name="Naziv_txt" HorizontalAlignment="Left" Height="24" Margin="111,163,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
-        <TextBox x:Name="Oib_txt" HorizontalAlignment="Left" Height="24" Margin="111,0,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Center" Width="142"/>
-        <TextBox x:Name="Adresa_txt" HorizontalAlignment="Left" Height="24" Margin="111,272,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
-        <TextBox x:Name="Email_txt" HorizontalAlignment="Left" Height="24" Margin="111,324,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
-        <DataGrid x:Name="dataGrid"  HorizontalAlignment="Left" Height="243" Margin="294,163,0,0" VerticalAlignment="Top" Width="440"/>
-        <Label Content="Naziv" HorizontalAlignment="Left" Margin="31,157,0,0" VerticalAlignment="Top"/>
-        <Label Content="Oib" HorizontalAlignment="Left" Margin="36,0,0,0" VerticalAlignment="Center"/>
-        <Label Content="Adresa" HorizontalAlignment="Left" Margin="27,267,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="36,318,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Naziv_txt" HorizontalAlignment="Left" Height="24" Margin="111,163,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <TextBox x:Name="Oib_txt" HorizontalAlignment="Left" Height="24" Margin="111,207,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="142" RenderTransformOrigin="0.503,0.843"/>
+        <TextBox x:Name="Adresa_txt" HorizontalAlignment="Left" Height="24" Margin="111,263,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="142" RenderTransformOrigin="0.503,-1.635"/>
+        <TextBox x:Name="Email_txt" HorizontalAlignment="Left" Height="24" Margin="111,307,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <DataGrid x:Name="dataGrid"  HorizontalAlignment="Left" Height="180" Margin="294,163,0,0" VerticalAlignment="Top" Width="440" SelectionChanged="dataGridSelCh"/>
+        <Label Content="Naziv" HorizontalAlignment="Left" Margin="20,157,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+        <Label Content="Oib" HorizontalAlignment="Left" Margin="20,207,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+        <Label Content="Adresa" HorizontalAlignment="Left" Margin="20,250,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="20,301,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.569,-0.2" HorizontalContentAlignment="Left"/>
+        <Button Content="Novi Klijent" HorizontalAlignment="Left" Margin="39,355,0,0" VerticalAlignment="Top" Click="SpremiBtn"/>
+        <Button Content="Izbriši" HorizontalAlignment="Left" Margin="218,355,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.211,-0.136" Click="izbrisiBtn"/>
+        <Button Content="Očisti" HorizontalAlignment="Left" Margin="549,355,0,0" VerticalAlignment="Top" Width="185" Click="ocistiBtn"/>
+        <Button Content="Izaberi Klijenta" HorizontalAlignment="Left" Margin="315,355,0,0" VerticalAlignment="Top" Width="211" Click="IzaberiBtn"/>
+        <Button Content="Promijeni" HorizontalAlignment="Left" Margin="142,355,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.514,0.547" Click="promijeniBtn"/>
+        <TextBox x:Name="ID_TXT" HorizontalAlignment="Left" Margin="169,124,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.531,0.12"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="24,116,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FilterNaziv_txt" HorizontalAlignment="Left" Margin="400,133,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="199"/>
+        <Button Content="Filtriraj po nazivu" HorizontalAlignment="Left" Margin="294,131,0,0" VerticalAlignment="Top" Width="90" Click="FilterNazivBtn"/>
 
 
     </Grid>

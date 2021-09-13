@@ -9,8 +9,22 @@
       Title="UslugePage">
 
     <Grid Background="White" HorizontalAlignment="Stretch" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto">
-        <TextBox Text="USLUGE" TextWrapping="Wrap" Margin="115,0,122,274" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox Text="USLUGE" TextWrapping="Wrap" Margin="290,34,0,0" FontSize="48" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Button Content="Povratak" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Height="48" Width="76" Click="PovratakBtn"/>
+        <DataGrid x:Name="dataGrid"  HorizontalAlignment="Left" Height="180" Margin="264,163,0,0" VerticalAlignment="Top" Width="470" SelectionChanged="TipSelectionCh"/>
+        <TextBox x:Name="FilterNaziv_txt" HorizontalAlignment="Left" Margin="400,133,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="199"/>
+        <Button Content="Filtriraj po nazivu" HorizontalAlignment="Left" Margin="282,131,0,0" VerticalAlignment="Top" Width="101" Click="FilterNazivBtn"/>
+        <TextBox x:Name="ID_TXT" HorizontalAlignment="Left" Margin="100,163,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.531,0.12"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="47,159,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.125,2.191"/>
+        <Button Content="Novi Tip Usluge" HorizontalAlignment="Left" Margin="39,355,0,0" VerticalAlignment="Top" Click="SpremiBtn"/>
+        <Button Content="Izbriši" HorizontalAlignment="Left" Margin="218,355,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.211,-0.136" Click="izbrisiBtn"/>
+        <Button Content="Očisti" HorizontalAlignment="Left" Margin="549,355,0,0" VerticalAlignment="Top" Width="185" Click="ocistiBtn"/>
+        <Button Content="Promijeni" HorizontalAlignment="Left" Margin="142,355,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.514,0.547" Click="promijeniBtn"/>
+        <TextBox x:Name="Naziv_txt" HorizontalAlignment="Left" Height="24" Margin="98,201,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <Label Content="Naziv" HorizontalAlignment="Left" Margin="38,199,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+        <TextBox x:Name="FKtip_txt"  HorizontalAlignment="Left" Height="18" Margin="196,163,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="44"/>
+        <ComboBox x:Name="ComboTip" HorizontalAlignment="Left" Margin="98,242,0,0" VerticalAlignment="Top" Width="142" AllowDrop="True" AlternationCount="-6" SelectionChanged="ComboSelection"/>
+        <Label Content="Tip Usluge" HorizontalAlignment="Left" Height="22" Margin="10,242,0,0" VerticalAlignment="Top" Width="83"/>
 
 
     </Grid>

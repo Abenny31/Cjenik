@@ -13,62 +13,55 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cjenik
+namespace Cjenik.Pages
+
 {
 
-    public partial class UslugePage : Page
+    public partial class CjenikPage : Page
     {
         SqlConnection conn = new SqlConnection(@"Data Source=BENIC;Initial Catalog=CjenikDatabase;Integrated Security=True;");
 
-        public UslugePage()
+        public CjenikPage()
         {
             InitializeComponent();
-            UcitajUsluge();
-            ListaTipova();
+            UcitajCjenik();
+            ListaUsluga();
+        }
 
+
+        private void navComplete(object sender, NavigationEventArgs e)
+        {
+            //e.Content.ToString();
+            
+            string str = (string)e.ExtraData;
+            KlijentID.Text = str;
 
         }
+
+
 
         private void PovratakBtn(object sender, RoutedEventArgs e)
         {
             this.Content = null;
+
         }
 
-        public void ListaTipova()
+        public void UcitajCjenik()
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "SviTipovi";
-            DataTable dataTable = new DataTable();
-            conn.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dataTable.Load(sdr);
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                string dodaj = dr["Naziv"].ToString();
-
-                ComboTip.Items.Add(dodaj);
-
-            }
-
-            conn.Close();
-
-
-        }
-
-        public void UcitajUsluge()
-        {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "SveUslugeNaziv";
+            //cmd.CommandText = "UcitajCjenikJednoga";
+            cmd.CommandText = "UcitajCjenike";
+            SqlParameter id = new SqlParameter("@ID",KlijentID.Text);
+            cmd.Parameters.Add(id);
             DataTable dataTable = new DataTable();
             conn.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
             dataTable.Load(sdr);
             conn.Close();
             dataGrid.ItemsSource = dataTable.DefaultView;
+
 
         }
 
@@ -78,15 +71,17 @@ namespace Cjenik
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "NovaUsluga";
-            SqlParameter naziv = new SqlParameter("@Naziv", Naziv_txt.Text);
-            SqlParameter fkTip = new SqlParameter("@FkTip", Int32.Parse(FKtip_txt.Text));
-            cmd.Parameters.Add(naziv);
-            cmd.Parameters.Add(fkTip);
+            cmd.CommandText = "NoviCjenik";
+            SqlParameter IDklijenta = new SqlParameter("@IDklijenta", KlijentID.Text);
+            SqlParameter IdUsluge = new SqlParameter("@IdUsluge", Int32.Parse(UslugaID.Text));
+            SqlParameter Cijena = new SqlParameter("@Cijena", Cijena_txt);
+            cmd.Parameters.Add(IDklijenta);
+            cmd.Parameters.Add(IdUsluge);
+            cmd.Parameters.Add(Cijena);
             conn.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
             conn.Close();
-            UcitajUsluge();
+            UcitajCjenik();
             MessageBox.Show("Uspješno dodana Usluga", "Spremljeno", MessageBoxButton.OK); ;
             ocisti();
 
@@ -95,9 +90,13 @@ namespace Cjenik
 
         public void ocisti()
         {
+            Cijena_txt.Clear();
             ID_TXT.Clear();
-            Naziv_txt.Clear();
-            UcitajUsluge();
+            Klijent_txt.Clear();
+            UslugaID.Clear();
+            comboUsluga.Items.Clear();
+            comboTip.Items.Clear();
+            UcitajCjenik();
 
         }
 
@@ -111,7 +110,7 @@ namespace Cjenik
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "IzbrisiUslugu";
+            cmd.CommandText = "IzbrisiCjenik";
 
             SqlParameter ID = new SqlParameter("@ID", ID_TXT.Text);
             cmd.Parameters.Add(ID);
@@ -119,8 +118,8 @@ namespace Cjenik
             conn.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
             conn.Close();
-            UcitajUsluge();
-            MessageBox.Show("Uspješno izbrisana", "Izbrisano", MessageBoxButton.OK); ;
+            UcitajCjenik();
+            MessageBox.Show("Uspješno izbrisan", "Izbrisano", MessageBoxButton.OK); ;
             ocisti();
 
         }
@@ -131,38 +130,23 @@ namespace Cjenik
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "UrediUslugu";
+            cmd.CommandText = "UrediCjenik";
             SqlParameter ID = new SqlParameter("@ID", ID_TXT.Text);
-            SqlParameter naziv = new SqlParameter("@Naziv", Naziv_txt.Text);
-            SqlParameter FkTip = new SqlParameter("@FkTip", FKtip_txt.Text);
+            SqlParameter IdKlijenta = new SqlParameter("@IDklijenta", KlijentID.Text);
+            SqlParameter IdUsluge = new SqlParameter("@IdUsluge", UslugaID.Text);
+            SqlParameter Cijena = new SqlParameter("@Cijena", Cijena_txt);
             cmd.Parameters.Add(ID);
-            cmd.Parameters.Add(naziv);
-            cmd.Parameters.Add(FkTip);
+            cmd.Parameters.Add(IdUsluge);
+            cmd.Parameters.Add(Cijena);
+            cmd.Parameters.Add(IdKlijenta);
             conn.Open();
             SqlDataReader sdr = cmd.ExecuteReader();
             conn.Close();
-            UcitajUsluge();
+            UcitajCjenik();
             MessageBox.Show("Uspješna izmjena", "Izmijenjeno", MessageBoxButton.OK); ;
             ocisti();
         }
 
-
-        private void FilterNazivBtn(object sender, RoutedEventArgs e)
-        {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "FilterPoNazivuUsluga";
-            SqlParameter naziv = new SqlParameter("@Naziv", FilterNaziv_txt.Text);
-            cmd.Parameters.Add(naziv);
-            DataTable dataTable = new DataTable();
-            conn.Open();
-            SqlDataReader sdr = cmd.ExecuteReader();
-            dataTable.Load(sdr);
-            conn.Close();
-            dataGrid.ItemsSource = dataTable.DefaultView;
-
-        }
 
         private void TipSelectionCh(object sender, SelectionChangedEventArgs e)
         {
@@ -171,8 +155,7 @@ namespace Cjenik
             if (row != null)
             {
                 ID_TXT.Text = row["ID"].ToString();
-                Naziv_txt.Text = row["Naziv"].ToString();
-                ComboTip.SelectedItem = row["Naziv1"].ToString();
+                
 
 
 
@@ -181,29 +164,50 @@ namespace Cjenik
 
 
         }
-
-        private void ComboSelection(object sender, SelectionChangedEventArgs e)
+        public void ListaUsluga()
         {
-            string text = ComboTip.SelectedItem.ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "ComboSelect";
-            SqlParameter naziv = new SqlParameter("@Naziv", text);
-            cmd.Parameters.Add(naziv);
+            cmd.CommandText = "SveUslugeLista";
             DataTable dataTable = new DataTable();
             conn.Open();
-            //int result = (int)cmd.ExecuteScalar();
-            FKtip_txt.Text = Convert.ToString(cmd.ExecuteScalar());
+            SqlDataReader sdr = cmd.ExecuteReader();
+            dataTable.Load(sdr);
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                string dodaj = dr["Naziv"].ToString();
 
+               comboUsluga.Items.Add(dodaj);
+
+            }
 
             conn.Close();
 
-            //FKtip_txt.Text = result.ToString(); ;
-
-
-          
 
         }
+        //private void ComboSelection(object sender, SelectionChangedEventArgs e)
+        //{
+        //    string text = comboUsluga.SelectedItem.ToString();
+        //    SqlCommand cmd = new SqlCommand();
+        //    cmd.Connection = conn;
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.CommandText = "ComboSelect";
+        //    SqlParameter naziv = new SqlParameter("@Naziv", text);
+        //    cmd.Parameters.Add(naziv);
+        //    DataTable dataTable = new DataTable();
+        //    conn.Open();
+        //    //int result = (int)cmd.ExecuteScalar();
+        //    FKtip_txt.Text = Convert.ToString(cmd.ExecuteScalar());
+
+
+        //    conn.Close();
+
+        //    //FKtip_txt.Text = result.ToString(); ;
+
+
+
+
+        //}
     }
 }
