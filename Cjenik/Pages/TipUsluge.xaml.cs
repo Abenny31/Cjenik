@@ -8,7 +8,7 @@ namespace Cjenik.Pages
 
     public partial class TipUsluge : Page
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=BENIC;Initial Catalog=CjenikDatabase;Integrated Security=True;");
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2CM2IA0\SQLEXPRESS;Initial Catalog=CjenikDatabase;Integrated Security=True;");
         public TipUsluge()
         {
             InitializeComponent();

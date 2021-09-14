@@ -9,14 +9,13 @@ namespace Cjenik
 
     public partial class UslugePage : Page
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=BENIC;Initial Catalog=CjenikDatabase;Integrated Security=True;");
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2CM2IA0\SQLEXPRESS;Initial Catalog=CjenikDatabase;Integrated Security=True;");
 
         public UslugePage()
         {
             InitializeComponent();
             UcitajUsluge();
             ListaTipova();
-
         }
 
         private void PovratakBtn(object sender, RoutedEventArgs e)
@@ -85,6 +84,8 @@ namespace Cjenik
         {
             ID_TXT.Clear();
             Naziv_txt.Clear();
+            ComboTip.SelectedItem = null;
+            FKtip_txt.Clear();
             UcitajUsluge();
 
         }
@@ -168,18 +169,22 @@ namespace Cjenik
 
         private void ComboSelection(object sender, SelectionChangedEventArgs e)
         {
-            string text = ComboTip.SelectedItem.ToString();
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "ComboSelect";
-            SqlParameter naziv = new SqlParameter("@Naziv", text);
-            cmd.Parameters.Add(naziv);
-            DataTable dataTable = new DataTable();
-            conn.Open();
-            FKtip_txt.Text = Convert.ToString(cmd.ExecuteScalar());
+            if (ComboTip.SelectedItem != null)
+            {
+                string text = ComboTip.SelectedItem.ToString();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "ComboSelect";
+                SqlParameter naziv = new SqlParameter("@Naziv", text);
+                cmd.Parameters.Add(naziv);
+                DataTable dataTable = new DataTable();
+                conn.Open();
+                FKtip_txt.Text = Convert.ToString(cmd.ExecuteScalar());
 
-            conn.Close();
+                conn.Close();
+            }
+
 
         }
     }

@@ -10,7 +10,7 @@ namespace Cjenik
 {
     public partial class KlijentiPage : Page
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=BENIC;Initial Catalog=CjenikDatabase;Integrated Security=True;");
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2CM2IA0\SQLEXPRESS;Initial Catalog=CjenikDatabase;Integrated Security=True;");
         public KlijentiPage()
         {
             InitializeComponent();
@@ -144,7 +144,7 @@ namespace Cjenik
         private void IzaberiBtn(object sender, RoutedEventArgs e)
         {
             IDtxt = ID_TXT.Text;
-            CjenikPage c1 = new CjenikPage();
+            CjenikPage c1 = new CjenikPage(IDtxt);
             this.NavigationService.Navigate(c1, IDtxt);
 
         }
